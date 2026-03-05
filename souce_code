@@ -1,0 +1,49 @@
+import random
+
+# some words for the game
+word_list = ["school", "pencil", "laptop", "coffee", "garden"]
+
+# choose a random word
+word = random.choice(word_list)
+
+guessed = []   # letters guessed by player
+wrong = 0      # wrong attempts
+limit = 6      # maximum wrong guesses allowed
+
+print("Welcome to Hangman Game")
+
+while wrong < limit:
+
+    display_word = ""
+
+    # showing guessed letters and blanks
+    for letter in word:
+        if letter in guessed:
+            display_word = display_word + letter
+        else:
+            display_word = display_word + "_"
+
+    print("Word:", display_word)
+
+    # check if player guessed the whole word
+    if "_" not in display_word:
+        print("You guessed the word correctly!")
+        print("The word was:", word)
+        break
+
+    guess = input("Enter a letter: ")
+
+    # add guessed letter to list
+    guessed.append(guess)
+
+    if guess in word:
+        print("Correct guess!")
+    else:
+        print("Wrong guess")
+        wrong = wrong + 1
+        print("Attempts left:", limit - wrong)
+
+# if attempts finished
+if wrong == limit:
+    print("Game Over")
+    print("The word was:", word)
