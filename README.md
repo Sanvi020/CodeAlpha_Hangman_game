@@ -1,2 +1,3 @@
 # CodeAlpha_Hangman_game
-Source code of hangman game
+Source code of hangman game in python
+
